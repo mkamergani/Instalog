@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  @@map(name: "users")
+  id String @id 
+  name String @db.VarChar(100)
+  email String @db.VarChar(100) @unique
+  events Event []
+}
+model Event{
+  @@map(name: "events")
+  id String @id 
+  object String @db.VarChar(100) 
+  group String @db.VarChar(100) 
+  target_id String @db.VarChar(100)
+  target_name String @db.VarChar(100)
+  location String @db.VarChar(100)
+  occurred_at DateTime @default(now())
+  redirect String @db.VarChar(100)
+  description String @db.VarChar(100)
+  x_request_id String @db.VarChar(100)
+  actor User @relation(fields: [actor_id], references: [id])
+  actor_id String @db.VarChar(100)
+  action Action @relation(fields:[action_id], references: [id])
+  action_id String @db.VarChar(100)
+}
+model Action {
+  @@map(name: "actions")
+  id String @id 
+  object String @db.VarChar(100) 
+  name String @db.VarChar(100) 
+  events Event []
+}
