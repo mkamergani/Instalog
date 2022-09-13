@@ -8,7 +8,7 @@ const app: express.Application = express();
 app.use(cors(config.server.corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
-routes.get('/', (req: Request, res: Response): void => {
+app.get('/', (req: Request, res: Response): void => {
   res.json('Instalog API');
 });
 app.use('/api', routes);
