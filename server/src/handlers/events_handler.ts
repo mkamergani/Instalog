@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const index = async (_req: Request, res: Response) => {
+export const index = async (_req: Request, res: Response): Promise<void> => {
   try {
     const events = await prisma.event.findMany({
       where: {
@@ -42,7 +42,7 @@ export const index = async (_req: Request, res: Response) => {
       orderBy: {
         occurred_at: 'desc'
       },
-      take: parseInt(_req.query.page as string) * 2 || 10
+      take: parseInt(_req.query.page as string) * 10 || 10
     });
     res.status(200);
     res.json(events);
@@ -52,11 +52,11 @@ export const index = async (_req: Request, res: Response) => {
   }
 };
 
-export const show = async (_req: Request, res: Response) => {
+export const show = async (_req: Request, res: Response): Promise<void> => {
   try {
     const event = await prisma.event.findUnique({
       where: {
-        id: _req.params.id
+        id: _req.params.id as string
       },
       include: {
         actor: {
@@ -81,7 +81,7 @@ export const show = async (_req: Request, res: Response) => {
   }
 };
 
-export const create = async (_req: Request, res: Response) => {
+export const create = async (_req: Request, res: Response): Promise<void> => {
   try {
     const event = await prisma.event.create({
       data: {
