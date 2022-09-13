@@ -1,6 +1,5 @@
-import { create } from './../../handlers/events_handler';
 import express from 'express';
-import { index, show } from '../../handlers/events_handler';
+import { index, show, create } from '../../handlers/events_handler';
 
 const event_router = express.Router();
 
