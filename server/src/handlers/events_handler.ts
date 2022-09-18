@@ -27,6 +27,7 @@ export const index = async (_req: Request, res: Response): Promise<void> => {
           : {})
       },
       select: {
+        id: true,
         occurred_at: true,
         actor: {
           select: {
