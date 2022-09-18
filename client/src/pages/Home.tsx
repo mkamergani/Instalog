@@ -18,6 +18,7 @@ import { useEvents } from "../helpers/dataQuery";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import ExportButton from "../components/ExportButton";
+import FilterButton from "../components/FilterButton";
 
 const Home: FC = (): ReactElement => {
   const [page, setPage] = useState(1);
@@ -26,6 +27,7 @@ const Home: FC = (): ReactElement => {
   const [actorID, setActorID] = useState("");
   const [actionID, setActionID] = useState("");
   const [targetID, setTargetID] = useState("");
+
   const [shouldFetch, setShouldFetch] = useState(true);
   const { events, isLoading, isError } = useEvents(
     shouldFetch,
@@ -59,6 +61,7 @@ const Home: FC = (): ReactElement => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
+              <FilterButton />
               <ExportButton data={events} />
             </SearchContainer>
             <HeaderContainer>
