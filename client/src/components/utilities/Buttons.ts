@@ -16,3 +16,21 @@ export const LoadMore = styled.button`
   text-transform: uppercase;
   color: #616161;
 `;
+
+export const Button = styled.button`
+  text-align: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0df;
+  padding: 5px;
+  height: 45px;
+  width: 10%;
+  min-width: 90px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #575757;
+`;

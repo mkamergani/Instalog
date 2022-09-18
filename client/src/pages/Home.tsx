@@ -10,12 +10,14 @@ import {
   HeaderContainer,
   HeaderLabel,
   RowsContainer,
+  SearchContainer,
 } from "../components/utilities/HomePage";
 import Row from "../components/Row";
 import { EventSummary } from "../helpers/types";
 import { useEvents } from "../helpers/dataQuery";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import ExportButton from "../components/ExportButton";
 
 const Home: FC = (): ReactElement => {
   const [page, setPage] = useState(1);
@@ -51,11 +53,14 @@ const Home: FC = (): ReactElement => {
       <MainContainer>
         <TableContainer>
           <TableHeader>
-            <SearchBar
-              placeholder="Search name, email or action..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
+            <SearchContainer>
+              <SearchBar
+                placeholder="Search name, email or action..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <ExportButton data={events} />
+            </SearchContainer>
             <HeaderContainer>
               <HeaderLabel>actor</HeaderLabel>
               <HeaderLabel>action</HeaderLabel>

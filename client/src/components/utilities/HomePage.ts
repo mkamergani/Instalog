@@ -38,16 +38,22 @@ export const TableHeader = styled.div`
   border-radius: 15px 15px 0px 0px;
 `;
 
+export const SearchContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  margin-bottom: 15px;
+`;
 export const SearchBar = styled.input`
   box-sizing: border-box;
-  width: 100%;
+  width: 80%;
   font-family: inter;
   height: 45px;
   background: #f5f5f5;
-  margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #e0e0df;
-  border-radius: 8px;
+  border-radius: 8px 0px 0px 8px;
 `;
 export const HeaderContainer = styled.div`
   display: flex;
